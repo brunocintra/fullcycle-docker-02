@@ -9,6 +9,7 @@ services:
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./create_table_people.sql:/docker-entrypoint-initdb.d/create_table_people.sql
     environment:
       - MYSQL_DATABASE=appdb
       - MYSQL_ROOT_PASSWORD=root
@@ -24,7 +25,7 @@ services:
       dockerfile: Dockerfile.prod
     image: brunoccintra/app:prod  
     container_name: app
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 10s node index.js
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 40s node index.js
     tty: true
     networks:
       - minha-rede
