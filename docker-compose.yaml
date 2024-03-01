@@ -39,7 +39,7 @@ services:
     image: brunoccintra/nginx:prod
     container_name: nginx
     ports:
-      - "80:80"
+      - "8080:8080"
     tty: true
     networks:
       - minha-rede
